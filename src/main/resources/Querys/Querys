@@ -1,0 +1,41 @@
+create database dcplina;
+
+CREATE USER 'usuario_prueba'@'localhost' IDENTIFIED BY 'Usuar1o_Clave.';
+GRANT ALL PRIVILEGES ON techshop.* TO 'usuario_prueba'@'localhost';
+FLUSH PRIVILEGES;
+
+use dcplina;
+
+CREATE TABLE entrenador (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    contrasena VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE usuario (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    edad int not null,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    contrasena VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE clase (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fecha DATE NOT NULL,
+    hora TIME NOT NULL,
+    entrenador_id INT,
+    FOREIGN KEY (entrenador_id) REFERENCES entrenador(id)
+);
+
+CREATE TABLE reserva (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    fecha_reserva TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    usuario_id INT,
+    clase_id INT,
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id),
+    FOREIGN KEY (clase_id) REFERENCES clase(id)
+);
+
+
