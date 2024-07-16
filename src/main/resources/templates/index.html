@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/components :: head}"></head>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home | DC-PLINA</title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}"/>
     </head>
-    <body>
-        <div>TODO write content</div>
+    <body id='bodyHome'>
+        <header th:replace="~{layout/components :: preHeader}"></header>
+        <navbar th:replace="~{layout/components :: navbar}"></navbar>
+        <div id='bgImage'>&nbsp;</div>
+        <footer th:replace="~{layout/components :: footer}"></footer>
     </body>
 </html>
