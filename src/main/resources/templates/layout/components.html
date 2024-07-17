@@ -11,7 +11,7 @@
                 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
                 </head>
                 <body>
-                    <div id="bgImage"></div> <!-- Asegúrate de cerrar el div correctamente -->
+                    <div id="bgImage"></div>
 
                     <header th:fragment="preHeader">
                         <div class="container-fluid preHeader" style="background-color: #ac1c2c;">
@@ -26,8 +26,12 @@
                             </div>
                         </div>
                     </header>
+                    <nav class="navbar navbar-expand navbar-dark container-fluid" style="background-color: #3c3c3c; height: 70px; " th:fragment="navbar">
+                        <a class="logo-navbar" href="#">
+                            <div class="logo-container"></div>
+                            <img th:src="@{/img/logo1.png}" alt="Logo" style="width: 400px; height: auto; padding: 70px "/>
+                        </a>
 
-                    <nav class="navbar navbar-expand navbar-dark container-fluid" style="background-color: #3c3c3c;" th:fragment="navbar">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
