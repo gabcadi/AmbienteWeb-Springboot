@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.dcplinaWeb;
 
 import org.springframework.context.annotation.Bean;
@@ -16,11 +12,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-/**
- *
- * @author isaac
- */
-
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -28,33 +19,39 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .authorizeHttpRequests(authorizeRequests ->
-                authorizeRequests
-                    .requestMatchers("/resources/**", "/login").permitAll()
-                    .requestMatchers("/entrenador/**").hasRole("ADMIN")
-                    .requestMatchers("/usuario/**").hasAnyRole("USER", "ADMIN")
-                    .anyRequest().authenticated()
-            )
-            .formLogin(formLogin ->
-                formLogin
-                    .loginPage("/login")
-                    .defaultSuccessUrl("/default", true)
-                    .permitAll()
-            )
-            .logout(logout -> logout.permitAll());
+                .authorizeHttpRequests(authorizeRequests
+                        -> authorizeRequests
+                        .requestMatchers("/", "/index", "/css/**",
+                                 "/webjars/**", "/js/**",
+                                 "/static/**", "/img/**", "/contactar", "/faq",
+                                 "/testimonios").permitAll()
+                        .requestMatchers("/login","/video/**"
+                                ,"/css/**","/js/**"
+                                ,"/webjars/**","/static/**","/img/**").permitAll()
+                        .requestMatchers("/entrenador/**").hasRole("ADMIN")
+                        .requestMatchers("/usuario/**").hasAnyRole("USER", "ADMIN")
+                        .anyRequest().authenticated()
+                )
+                .formLogin(formLogin
+                        -> formLogin
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/default", true)
+                        .permitAll()
+                )
+                .logout(logout -> logout.permitAll());
         return http.build();
     }
-    
+
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails user = User.withUsername("user")
-            .password(passwordEncoder().encode("password"))
-            .roles("USER")
-            .build();
+                .password(passwordEncoder().encode("password"))
+                .roles("USER")
+                .build();
         UserDetails admin = User.withUsername("admin")
-            .password(passwordEncoder().encode("admin"))
-            .roles("ADMIN")
-            .build();
+                .password(passwordEncoder().encode("admin"))
+                .roles("ADMIN")
+                .build();
         return new InMemoryUserDetailsManager(user, admin);
     }
 
@@ -63,4 +60,3 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 }
-

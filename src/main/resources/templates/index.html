@@ -6,9 +6,32 @@
         <title>Home | DC-PLINA</title>
         <link rel="stylesheet" th:href="@{/css/styles.css}"/>
     </head>
-    <body id='bodyHome'>
+    <body>
         <header th:replace="~{layout/components :: preHeader}"></header>
         <navbar th:replace="~{layout/components :: navbar}"></navbar>
+        
+         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img th:src="@{/img/bgImage2.jpg}" class="d-block w-100" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img th:src="@{/img/homepage.jpg}" class="d-block w-100" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img th:src="@{/img/bgImage3.jpg}" class="d-block w-100" alt="Third slide">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </a>
+        </div>
         
         <footer th:replace="~{layout/components :: footer}"></footer>
     </body>

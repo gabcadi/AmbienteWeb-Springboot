@@ -1,42 +1,54 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
       xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
-    <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
-    <title>Login</title>
-</head>
-<body>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header text-center">
-                        <h4>Login</h4>
+    <head>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+                <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+                <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+                <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+                <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+                <title>Login</title>
+                <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+                </head>
+                <body>
+                    <div class="container">
+                        <div class="video-background">
+                            <video autoplay muted loop id="bgVideo">
+                                <source th:src="@{/img/bgVideo1.mp4}" type="video/mp4">
+                                    Your browser does not support the video.
+                            </video>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <form th:action="@{/login}" method="post">
-                            <div class="form-group">
-                                <label for="username">Usuario:</label>
-                                <input type="text" class="form-control" id="username" name="username" required>
+
+                    <div class="login-container centered-container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header text-center">
+                                        <img th:src="@{/img/logo2.png}" alt="logoLogin"/>
+                                    </div>
+                                    <div class="card-body">
+                                        <form th:action="@{/login}" method="post">
+                                            <div class="form-group">
+                                                <label for="username">Usuario:</label>
+                                                <input type="text" class="form-control" id="username" name="username" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="password">Contraseña:</label>
+                                                <input type="password" class="form-control" id="password" name="password" required>
+                                            </div>
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-primary mt-4">Login</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="password">Contraseña:</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
-                            </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary mt-4">Login</button>
-                            </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-</body>
-</html>
+
+
+                </body>
+                </html>
