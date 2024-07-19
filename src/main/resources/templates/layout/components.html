@@ -28,8 +28,7 @@
                     </header>
                     <nav class="navbar navbar-expand navbar-dark container-fluid" style="background-color: #3c3c3c; height: 70px; " th:fragment="navbar">
                         <a class="logo-navbar" href="#">
-                            <div class="logo-container"></div>
-                            <img th:src="@{/img/logo1.png}" alt="Logo" style="width: 400px; height: auto; padding: 70px "/>
+                            <img th:src="@{/img/logo1.png}" alt="Logo" style="width: 250px; height: auto; margin-left: 60px"/>
                         </a>
 
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,13 +41,13 @@
                                     <a class="nav-link" href="#">Servicios <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Testimonios</a>
+                                    <a class="nav-link" href="/testimonios">Testimonios</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Preguntas Frecuentes</a>
+                                    <a class="nav-link" href="/faq">Preguntas Frecuentes</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Contactar</a>
+                                    <a class="nav-link" href="/contactar">Contactar</a>
                                 </li>
                             </ul>
                         </div>
@@ -57,6 +56,11 @@
                     <footer class="container-fluid position-absolute fixed-bottom" style="background-color: #3c3c3c;" th:fragment="footer">
                         <div class="m-3">
                             <p class="text-white">Copyright © 2024 DC-PlinaByChino.com</p>
+                        </div>
+                        <div clas="float-end">
+                            <a href="https://api.whatsapp.com/send/?phone=50689520907&text=Hola!+Acabo+de+ver+tu+página+web+DC-PLINA+y+quiero+empezar+un+cambio+físico" target="_blank">
+                                <i class="fa-brands fa-whatsapp" style="color: #ffffff;"></i>
+                            </a>    
                         </div>
                     </footer>
 

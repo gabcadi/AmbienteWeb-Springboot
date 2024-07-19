@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/components :: head}"></head>
+    <head>
+        <title>Testimonios | DC-PLINA</title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    </head>
+    <body>
+        <header th:replace="~{layout/components :: preHeader}"></header>
+        <navbar th:replace="~{layout/components :: navbar}"></navbar>
+        
+        <div class="container mt-5">
+            <h1 class="text-center">Testimonios</h1>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="ruta-de-la-imagen-1.jpg" class="card-img-top" alt="Juan Pérez">
+                            <div class="card-body">
+                                <h5 class="card-title">Juan Pérez</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Cliente Satisfecho</h6>
+                                <p class="card-text">"Gracias a DC-PLINA he logrado mejorar mi condición física de manera significativa. Las sesiones son muy profesionales y efectivas."</p>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="ruta-de-la-imagen-2.jpg" class="card-img-top" alt="María Gómez">
+                            <div class="card-body">
+                                <h5 class="card-title">María Gómez</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Cliente Satisfecho</h6>
+                                <p class="card-text">"El entrenador es muy atento y profesional. Las clases son muy dinámicas y adaptadas a mis necesidades. ¡Recomiendo DC-PLINA a todos!"</p>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="ruta-de-la-imagen-3.jpg" class="card-img-top" alt="Carlos López">
+                            <div class="card-body">
+                                <h5 class="card-title">Carlos López</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Cliente Satisfecho</h6>
+                                <p class="card-text">"He probado varios servicios de entrenamiento, pero DC-PLINA es el mejor. El sistema de reservas es muy conveniente y las sesiones son excelentes."</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="ruta-de-la-imagen-4.jpg" class="card-img-top" alt="Ana Torres">
+                            <div class="card-body">
+                                <h5 class="card-title">Ana Torres</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Cliente Satisfecho</h6>
+                                <p class="card-text">"DC-PLINA ha cambiado mi vida. Ahora me siento más saludable y en forma. Las sesiones son siempre un reto y me encanta."</p>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="ruta-de-la-imagen-5.jpg" class="card-img-top" alt="Luis Martínez">
+                            <div class="card-body">
+                                <h5 class="card-title">Luis Martínez</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Cliente Satisfecho</h6>
+                                <p class="card-text">"El mejor servicio de entrenamiento que he probado. Las sesiones son muy personalizadas y los resultados hablan por sí mismos."</p>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="ruta-de-la-imagen-6.jpg" class="card-img-top" alt="Sofía Ramírez">
+                            <div class="card-body">
+                                <h5 class="card-title">Sofía Ramírez</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Cliente Satisfecho</h6>
+                                <p class="card-text">"Me encanta la flexibilidad de las reservas y la calidad de las sesiones. El entrenador siempre está disponible para ayudar y guiar."</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer th:replace="~{layout/components :: footer}"></footer>
+    </body>
+</html>

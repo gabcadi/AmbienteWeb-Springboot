@@ -10,8 +10,6 @@
     background-size: 100% auto;
     background-position: center top;
     background-attachment: fixed;
-   
-    
 }
 
 #bgImage {
@@ -20,13 +18,3 @@
     width: 100%;
     max-width:  100%;
 }
-
-.preHeader{
-    width:  100%;
-}
-
-.logo-navbar{
-    width: 100px; 
-    height: auto;
-}
-
