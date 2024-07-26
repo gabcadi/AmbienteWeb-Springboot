@@ -11,6 +11,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author isaac
  */
-public interface EntrenadorDao 
-        extends JpaRepository<Entrenador, Long> {}
+public interface EntrenadorDao
+        extends JpaRepository<Entrenador, Long> {
 
+    Entrenador findByEmail(String email);
+}

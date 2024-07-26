@@ -15,14 +15,74 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="usuario")
+@Table(name = "usuario")
 public class Usuario implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_usuario")
+    @Column(name = "id_usuario")
     private Long idUsuario;
+
+    @Column(nullable = false)
     private String nombre;
+
+    @Column(nullable = false)
     private int edad;
+
+    @Column(nullable = false, unique = true)
     private String email;
+
+    @Column(nullable = false)
     private String contrasena;
+
+    public Usuario() {
+    }
+
+    public Usuario(String nombre, int edad, String email, String contrasena) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.email = email;
+        this.contrasena = contrasena;
+    }
+
+    public Long getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
 }

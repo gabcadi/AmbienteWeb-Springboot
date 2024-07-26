@@ -14,28 +14,67 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import lombok.Data;
-
 
 @Data
 @Entity
-@Table(name="reserva")
+@Table(name = "reserva")
 public class Reserva implements Serializable {
-    
+
     private static final long serialVersionUID = 11;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_reserva")
-    private Long id_reserva;
-    private Timestamp fecha_reserva;
-    
+    private Long idReserva;
+
+    @Column(name = "fecha_reserva", nullable = false, updatable = false, insertable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime fechaReserva;
+
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "id_usuario")
     private Usuario usuario;
-    
+
     @ManyToOne
-    @JoinColumn(name = "clase_id")
+    @JoinColumn(name = "id_clase")
     private Clase clase;
-    
+
+    public Reserva() {
+    }
+
+    public Reserva(LocalDateTime fechaReserva, Usuario usuario, Clase clase) {
+        this.fechaReserva = fechaReserva;
+        this.usuario = usuario;
+        this.clase = clase;
+    }
+
+    public Long getIdReserva() {
+        return idReserva;
+    }
+
+    public void setIdReserva(Long idReserva) {
+        this.idReserva = idReserva;
+    }
+
+    public LocalDateTime getFechaReserva() {
+        return fechaReserva;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Clase getClase() {
+        return clase;
+    }
+
+    public void setClase(Clase clase) {
+        this.clase = clase;
+    }
+
 }
