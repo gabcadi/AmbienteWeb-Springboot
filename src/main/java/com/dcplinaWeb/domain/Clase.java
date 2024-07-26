@@ -42,36 +42,4 @@ public class Clase {
         this.entrenador = entrenador;
     }
 
-    public Long getIdClase() {
-        return idClase;
-    }
-
-    public void setIdClase(Long idClase) {
-        this.idClase = idClase;
-    }
-
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public Time getHora() {
-        return hora;
-    }
-
-    public void setHora(Time hora) {
-        this.hora = hora;
-    }
-
-    public Entrenador getEntrenador() {
-        return entrenador;
-    }
-
-    public void setEntrenador(Entrenador entrenador) {
-        this.entrenador = entrenador;
-    }
-
 }

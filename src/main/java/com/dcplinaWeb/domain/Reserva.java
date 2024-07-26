@@ -49,32 +49,5 @@ public class Reserva implements Serializable {
         this.clase = clase;
     }
 
-    public Long getIdReserva() {
-        return idReserva;
-    }
-
-    public void setIdReserva(Long idReserva) {
-        this.idReserva = idReserva;
-    }
-
-    public LocalDateTime getFechaReserva() {
-        return fechaReserva;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public Clase getClase() {
-        return clase;
-    }
-
-    public void setClase(Clase clase) {
-        this.clase = clase;
-    }
-
+    
 }
