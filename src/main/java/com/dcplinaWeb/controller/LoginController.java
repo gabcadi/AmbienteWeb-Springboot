@@ -16,7 +16,7 @@ public class LoginController {
     
    @GetMapping("/default")
     public String defaultAfterLogin(Authentication authentication) {
-        if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ENTRENADOR"))) {
+        if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
             return "redirect:/entrenador/home";
         }
         return "redirect:/usuario/home";
