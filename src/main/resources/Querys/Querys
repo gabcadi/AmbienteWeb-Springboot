@@ -1,4 +1,6 @@
-create database dcplina;
+drop schema if exists dcplina;
+drop user if exists usuario_prueba;
+CREATE SCHEMA dcplina;
 
 use dcplina;
 
@@ -12,13 +14,20 @@ CREATE TABLE usuario (
     username VARCHAR(100) UNIQUE NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     contrasena VARCHAR(255) NOT NULL,
-    ruta_imagen VARCHAR(1024)
-);
+    ruta_imagen VARCHAR(1024),
+    activo boolean
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
 
 CREATE TABLE rol(
 	id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) UNIQUE NOT NULL
-);
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
 
 CREATE TABLE usuario_rol(
 	usuario_id INT NOT NULL,
@@ -26,14 +35,19 @@ CREATE TABLE usuario_rol(
     PRIMARY KEY (usuario_id, rol_id),
     FOREIGN KEY (usuario_id) REFERENCES usuario(id),
     FOREIGN KEY (rol_id) REFERENCES rol(id)
-);
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
 
 CREATE TABLE clase(
 id INT AUTO_INCREMENT PRIMARY KEY,
     fecha DATE NOT NULL,
     hora TIME NOT NULL,
     UNIQUE (fecha, hora)
-);
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
 
 CREATE TABLE reserva (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -44,6 +58,7 @@ CREATE TABLE reserva (
     FOREIGN KEY (usuario_id) REFERENCES usuario(id),
     UNIQUE (clase_id),
     UNIQUE (usuario_id)
-);
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
 
-ALTER TABLE usuario ADD COLUMN activo BOOLEAN NOT NULL DEFAULT TRUE;
