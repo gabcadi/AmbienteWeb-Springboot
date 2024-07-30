@@ -21,19 +21,13 @@ import org.springframework.security.web.authentication.rememberme.PersistentToke
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private final DataSource dataSource;
-    private final UserDetailsService userDetailsService;
 
-    public SecurityConfig(DataSource dataSource, UserDetailsService userDetailsService) {
-        this.dataSource = dataSource;
-        this.userDetailsService = userDetailsService;
-    }
+//Estado base
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
-                .requestMatchers("/registro").permitAll()
                 .requestMatchers("/", "/index", "/css/**", "/webjars/**", "/js/**", "/static/**", "/img/**", "/contactar", "/faq", "/testimonios").permitAll()
                 .requestMatchers("/login", "/video/**", "/css/**", "/js/**", "/webjars/**", "/static/**", "/img/**").permitAll()
                 .requestMatchers("/entrenador/**").hasRole("ENTRENADOR")
@@ -45,22 +39,26 @@ public class SecurityConfig {
                 .defaultSuccessUrl("/default", true)
                 .permitAll()
                 )
-                .logout(logout -> logout.permitAll())
-                .rememberMe(rememberMe -> rememberMe
-                .tokenRepository(persistentTokenRepository())
-                .tokenValiditySeconds(86400) // 1 día
-                .key("mySecretKey")
-                .userDetailsService(userDetailsService)
-                );
+                .logout(logout -> logout.permitAll());
 
         return http.build();
     }
 
-    @Bean
-    public PersistentTokenRepository persistentTokenRepository() {
-        JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
-        tokenRepository.setDataSource(dataSource);
-        return tokenRepository;
+    
+    
+@Bean
+    public UserDetailsService userDetailsService() {
+        UserDetails user = User.withUsername("user")
+            .password(passwordEncoder().encode("password"))
+            .roles("USER")
+            .build();
+
+        UserDetails admin = User.withUsername("admin")
+            .password(passwordEncoder().encode("adminpass"))
+            .roles("ADMIN")
+            .build();
+
+        return new InMemoryUserDetailsManager(user, admin);
     }
 
     @Bean

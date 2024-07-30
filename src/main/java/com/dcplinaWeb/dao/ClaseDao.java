@@ -11,6 +11,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author isaac
  */
-public interface ClaseDao 
-        extends JpaRepository<Clase, Long> {}    
-
+public interface ClaseDao
+        extends JpaRepository<Clase, Long> {
+}
