@@ -11,6 +11,8 @@ import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import lombok.Data;
 
 @Data
@@ -20,26 +22,19 @@ public class Clase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_clase")
-    private Long idClase;
+    @Column(name = "id")
+    private Long id;
 
     @Column(nullable = false)
-    private Date fecha;
+    private LocalDate fecha;
 
     @Column(nullable = false)
-    private Time hora;
+    private LocalTime hora;
 
-    @ManyToOne // Relación muchos a uno con Entrenador
-    @JoinColumn(name = "id_entrenador") // Nombre de la columna de clave externa
-    private Entrenador entrenador;
+    @ManyToOne 
+    @JoinColumn(name = "entrenador_id", nullable = false) 
+    private Usuario entrenador;
 
-    public Clase() {
-    }
-
-    public Clase(Date fecha, Time hora, Entrenador entrenador) {
-        this.fecha = fecha;
-        this.hora = hora;
-        this.entrenador = entrenador;
-    }
+    
 
 }

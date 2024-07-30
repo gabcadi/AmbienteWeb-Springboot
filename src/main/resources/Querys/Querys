@@ -1,39 +1,49 @@
-CREATE DATABASE dcplina;
+create database dcplina;
 
-CREATE USER 'usuario_prueba'@'localhost' IDENTIFIED BY 'Usuar1o_Clave.';
-GRANT ALL PRIVILEGES ON dcplina.* TO 'usuario_prueba'@'localhost';
-FLUSH PRIVILEGES;
+use dcplina;
 
-USE dcplina;
-
-CREATE TABLE entrenador (
-    id_entrenador INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    contrasena VARCHAR(255) NOT NULL
-);
+create user 'usuario_prueba'@'%' identified by 'Usuar1o_Clave.';
+grant all privileges on techshop.* to 'usuario_prueba'@'%';
+flush privileges;
 
 CREATE TABLE usuario (
-    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
-    edad INT NOT NULL,
+    username VARCHAR(100) UNIQUE NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
-    contrasena VARCHAR(255) NOT NULL
+    contrasena VARCHAR(255) NOT NULL,
+    ruta_imagen VARCHAR(1024)
 );
 
-CREATE TABLE clase (
-    id_clase INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE rol(
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) UNIQUE NOT NULL
+);
+
+CREATE TABLE usuario_rol(
+	usuario_id INT NOT NULL,
+    rol_id INT NOT NULL,
+    PRIMARY KEY (usuario_id, rol_id),
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id),
+    FOREIGN KEY (rol_id) REFERENCES rol(id)
+);
+
+CREATE TABLE clase(
+id INT AUTO_INCREMENT PRIMARY KEY,
     fecha DATE NOT NULL,
     hora TIME NOT NULL,
-    id_entrenador INT,
-    FOREIGN KEY (id_entrenador) REFERENCES entrenador(id_entrenador)
+    UNIQUE (fecha, hora)
 );
 
 CREATE TABLE reserva (
-    id_reserva INT AUTO_INCREMENT PRIMARY KEY,
-    fecha_reserva TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    id_usuario INT,
-    id_clase INT,
-    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
-    FOREIGN KEY (id_clase) REFERENCES clase(id_clase)
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    clase_id INT NOT NULL,
+    usuario_id INT NOT NULL,
+    fecha_reserva DATETIME NOT NULL,
+    FOREIGN KEY (clase_id) REFERENCES clase(id),
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id),
+    UNIQUE (clase_id),
+    UNIQUE (usuario_id)
 );
+
+ALTER TABLE usuario ADD COLUMN activo BOOLEAN NOT NULL DEFAULT TRUE;
