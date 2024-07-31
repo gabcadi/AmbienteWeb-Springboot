@@ -10,11 +10,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -24,20 +25,18 @@ public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    @Column(name = "id_usuario")
+    private Long idUsuario;
     private String nombre;
+    private String apellido;
+    private int telefono;
+    private String username;
     private String email;
     private String contrasena;
     private boolean activo = true;
 
-    @ManyToMany
-    @JoinTable(
-            name = "usuario_rol",
-            joinColumns = @JoinColumn(name = "usuario_id"),
-            inverseJoinColumns = @JoinColumn(name = "rol_id")
-    )
-
-    private Set<Rol> roles;
+    @OneToMany
+    @JoinColumn(name="id_usuario",updatable=false)
+    private List<Rol> roles;
 
 }
