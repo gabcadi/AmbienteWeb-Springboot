@@ -26,26 +26,18 @@ public class Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-
-    @Column(nullable = false)
     private String nombre;
-
-    @Column(unique = true, nullable = false)
     private String email;
-    
-    @Column(nullable = false)
     private String contrasena;
-    
-    @Column(nullable = false)
     private boolean activo = true;
-    
+
     @ManyToMany
     @JoinTable(
-    name = "usuario_rol",
-    joinColumns = @JoinColumn(name = "usuario_id"),
-    inverseJoinColumns = @JoinColumn(name = "rol_id")
+            name = "usuario_rol",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "rol_id")
     )
-    
+
     private Set<Rol> roles;
 
 }

@@ -17,28 +17,14 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import lombok.Data;
 
-@Data
-@Entity
-@Table(name = "reserva")
+
 public class Reserva implements Serializable {
 
     private static final long serialVersionUID = 11;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    
     private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "clase_id", nullable = false, unique = true)
     private Clase clase;
-    
-    
-    @ManyToOne
-    @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario usuario;
-
-    @Column(nullable = false)
     private LocalDateTime fechaReserva;
 
 }
