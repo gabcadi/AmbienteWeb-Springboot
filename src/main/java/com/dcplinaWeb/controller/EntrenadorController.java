@@ -17,5 +17,10 @@ public class EntrenadorController {
     public String entrenadorInbox() {
         return "entrenador/inbox";
     }
+    
+    @GetMapping("/entrenador/usuarios")
+    public String entrenadorUsuarios() {
+        return "entrenador/usuarios";
+    }
 }
 
