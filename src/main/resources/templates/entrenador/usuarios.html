@@ -40,9 +40,9 @@
                         <td th:text="${usuario.email}"></td>
                         <td th:text="${usuario.activo ? 'Sí' : 'No'}"></td>
                         <td>
-                            <button class="btn btn-info" th:onclick="'window.location.href=\'/entrenador/usuarios/inactivar/' + ${usuario.idUsuario} + '\''">Inactivar</button>
-                            <button class="btn btn-info" th:onclick="'window.location.href=\'/entrenador/usuarios/activar/' + ${usuario.idUsuario} + '\''">Activar</button>
-                            <button class="btn btn-danger" th:onclick="'window.location.href=\'/entrenador/usuarios/eliminar/' + ${usuario.idUsuario} + '\''">Eliminar</button>
+                            <button class="btn btn-info" th:onclick="'window.location.href=\'/entrenador/usuarios/inactivar/' + ${usuario.idUsuario} + '\''"><i class="fa-solid fa-ban"></i></button>
+                            <button class="btn btn-info" th:onclick="'window.location.href=\'/entrenador/usuarios/activar/' + ${usuario.idUsuario} + '\''"><i class="fa-solid fa-check"></i></button>
+                            <button class="btn btn-danger" th:onclick="'window.location.href=\'/entrenador/usuarios/eliminar/' + ${usuario.idUsuario} + '\''"><i class="fa-solid fa-trash"></i></button>
                         </td>
                     </tr>
                 </tbody>
@@ -92,7 +92,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary" form="usuarioForm">Guardar</button>
+                        <button type="submit" class="btn btn-info" form="usuarioForm">Guardar</button>
                     </div>
                 </div>
             </div>
