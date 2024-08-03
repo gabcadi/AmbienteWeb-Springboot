@@ -36,7 +36,7 @@ public class UserDetailsServiceImpl
         Usuario usuario = usuarioDao.findByUsername(username);
         
         //Se valida si se encontro el usuario con el username pasado
-        if(usuario == null){
+        if(usuario == null || !usuario.isActivo()){
             //El usuario no se encontro
             throw new UsernameNotFoundException(username);
         }

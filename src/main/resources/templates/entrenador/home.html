@@ -10,7 +10,18 @@
     <body>
         <header th:replace="~{layout/components :: preHeader}"></header>
         <navbar th:replace="~{layout/components :: navbarAdministrador}"></navbar>
-        <h1 class='p-5'>Bienvenido Administrador</h1>
+        <div class='center-container'>
+            <h1 class='p-5'>Bienvenido Administrador</h1>
+        </div>
+        <div class='button-container'>
+            <a class="btn btn-danger">Reservas</a>
+            <a class="btn btn-danger">Servicios</a>
+            <a th:href="@{/entrenador/usuarios}" class="btn btn-danger">Usuarios</a>
+            <a class="btn btn-danger">Avisos</a>
+            <a th:href="@{/entrenador/inbox}" class="btn btn-danger">Inbox</a>
+
+        </div>
+
         <footer th:replace="~{layout/components :: footer}"></footer>
     </body>
 </html>

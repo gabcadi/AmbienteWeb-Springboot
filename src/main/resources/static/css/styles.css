@@ -22,7 +22,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; 
+    overflow-x: hidden;
 }
 
 * {
@@ -32,7 +32,7 @@ html, body {
 
 .carousel-inner img {
     width: 100%;
-    height: auto; 
+    height: auto;
 }
 
 body {
@@ -70,4 +70,20 @@ body, * {
     background-color: rgba(172, 28, 44, 0.43);
     padding: 20px;
     border-radius: 8px;
+}
+
+.center-container {
+    text-align: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn {
+    margin: 5px;
 }

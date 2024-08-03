@@ -12,6 +12,7 @@
         <header th:replace="~{layout/components :: preHeader}"></header>
         <navbar th:replace="~{layout/components :: navbarAdministrador}"></navbar>
 
+        <!-- Vista de los usuarios -->
 
         <div class="w-100 p-4">
             <h1 class='my-3'>Módulo de Usuarios</h1>
@@ -39,14 +40,15 @@
                         <td th:text="${usuario.email}"></td>
                         <td th:text="${usuario.activo ? 'Sí' : 'No'}"></td>
                         <td>
-                            <button class="btn btn-info" th:onclick="'window.location.href=\'/usuarios/editar/' + ${usuario.idUsuario} + '\''">Editar</button>
-                            <button class="btn btn-danger" th:onclick="'window.location.href=\'/usuarios/eliminar/' + ${usuario.idUsuario} + '\''">Eliminar</button>
+                            <button class="btn btn-info" th:onclick="'window.location.href=\'/entrenador/usuarios/inactivar/' + ${usuario.idUsuario} + '\''">Inactivar</button>
+                            <button class="btn btn-info" th:onclick="'window.location.href=\'/entrenador/usuarios/activar/' + ${usuario.idUsuario} + '\''">Activar</button>
+                            <button class="btn btn-danger" th:onclick="'window.location.href=\'/entrenador/usuarios/eliminar/' + ${usuario.idUsuario} + '\''">Eliminar</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-
+        <!-- Ventana de agregar nuevos usuarios -->
         <div class="modal fade" id="usuarioModal" tabindex="-1" role="dialog" aria-labelledby="usuarioModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -57,46 +59,50 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form id="usuarioForm" th:action="@{/usuarios/guardar}" th:object="${usuario}" method="post">
+                        <form id="usuarioForm" th:action="@{/entrenador/guardar}" th:object="${usuario}" method="post">
                             <div class="form-group">
                                 <label for="nombre">Nombre:</label>
-                                <input type="text" id="nombre" class="form-control" required/>
+                                <input type="text" id="nombre" name="nombre" class="form-control"  required/>
                             </div>
                             <div class="form-group">
                                 <label for="apellido">Apellido:</label>
-                                <input type="text" id="apellido" class="form-control" required/>
+                                <input type="text" id="apellido" name="apellido" class="form-control"  required/>
+
                             </div>
                             <div class="form-group">
                                 <label for="telefono">Teléfono:</label>
-                                <input type="text" id="telefono" class="form-control" required/>
+                                <input type="number" id="telefono" name="telefono" class="form-control"  required/>
+
                             </div>
                             <div class="form-group">
                                 <label for="username">Username:</label>
-                                <input type="text" id="username" class="form-control" required/>
+                                <input type="text" id="username" name="username" class="form-control"  required/>
+
                             </div>
                             <div class="form-group">
                                 <label for="email">Email:</label>
-                                <input type="email" id="email" class="form-control" required/>
+                                <input type="email" id="email" name="email" class="form-control"  required/>
+
                             </div>
                             <div class="form-group">
                                 <label for="contrasena">Contraseña:</label>
-                                <input type="password" id="contrasena" class="form-control" required/>
+                                <input type="password" id="contrasena" name="contrasena" class="form-control" required/>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary" onclick="submitForm()">Guardar</button>
+                        <button type="submit" class="btn btn-primary" form="usuarioForm">Guardar</button>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <footer th:replace="~{layout/components :: footer}"></footer>
     </body>
     <script>
-    function submitForm() {
+        function submitForm() {
         document.getElementById('usuarioForm').submit();
-    }
+        }
     </script>
 </html>
