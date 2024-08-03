@@ -26,11 +26,17 @@
                         <a th:href='@{/login}' style="color: #ffffff; text-decoration: none" sec:authorize="!isAuthenticated()">
                             <i class="fa-solid fa-circle-user me-1" style="color: #ffffff;" sec:authorize="!isAuthenticated()"></i>
                             Acceder
+
                         </a>      
-                        <a th:href="@{/default}" sec:authorize="isAuthenticated()" style="color: #ffffff; text-decoration: none">
-                            <i <i class="fa-solid fa-user" style="color: #ffffff;" sec:authorize="isAuthenticated()"></i>
+                        <a th:href="@{/default}" sec:authorize="hasRole('ROLE_USER')" style="color: #ffffff; text-decoration: none" >
+                            <i class="fa-solid fa-user" style="color: #ffffff;" sec:authorize="hasRole('ROLE_USER')"></i>
                             Perfil
                         </a> 
+                        <form th:action="@{/logout}" method="post" class="d-inline" sec:authorize="isAuthenticated()">
+                            <button type="submit" class="btn btn-outline-light" style="margin-left: 10px;">
+                                Cerrar Sesión
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -47,7 +53,7 @@
             <div class="collapse navbar-collapse justify-content-md-end">
                 <ul class="navbar-nav" >
                     <li class="nav-item">
-                        <a class="nav-link" href="#" sec:authorize="hasRole('ROLE_ADMIN')">Administrador</a>
+                        <a class="nav-link" th:href="@{/entrenador/home}" sec:authorize="hasRole('ROLE_ADMIN')">Administrador</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" sec:authorize="hasRole('ROLE_USER')">Reservar Clase</a>
@@ -64,6 +70,7 @@
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/contactar}">Contactar</a>
                     </li>
+
                 </ul>
             </div>
         </nav>
@@ -108,7 +115,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            
+
         </nav>
 
         <footer class="container-fluid position-absolute fixed-bottom" style="background-color: #3c3c3c;" th:fragment="footer">
