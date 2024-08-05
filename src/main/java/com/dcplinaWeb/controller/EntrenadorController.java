@@ -38,7 +38,7 @@ public class EntrenadorController {
     public String entrenadorInbox() {
         return "entrenador/inbox";
     }
-    
+
     @GetMapping("/usuarios")
     public String inicio(Model model) {
         var usuarios = usuarioService.getUsuarios();
@@ -52,21 +52,18 @@ public class EntrenadorController {
         return "/entrenador/guardar";
     }
 
-    //No funciona
     @PostMapping("/guardar")
     public String guardarUsuario(@RequestParam String nombre,
             @RequestParam String apellido,
             @RequestParam int telefono,
             @RequestParam String username,
-            @RequestParam String email,
-            @RequestParam String contrasena) {
+            @RequestParam String email) {
         Usuario usuario = new Usuario();
         usuario.setNombre(nombre);
         usuario.setApellido(apellido);
         usuario.setTelefono(telefono);
         usuario.setUsername(username);
         usuario.setEmail(email);
-        usuario.setContrasena(passwordEncoder.encode(contrasena));
 
         usuarioService.save(usuario, true);
 
