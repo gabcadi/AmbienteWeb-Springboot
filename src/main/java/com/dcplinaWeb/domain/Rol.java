@@ -24,6 +24,7 @@ public class Rol {
     @Column(name = "id_rol")
     private Long idRol;
     private String nombre;
+
     private Long id_usuario;
     
        

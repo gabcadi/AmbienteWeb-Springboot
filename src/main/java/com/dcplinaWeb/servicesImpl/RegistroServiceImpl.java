@@ -140,7 +140,7 @@ public class RegistroServiceImpl implements RegistroService {
                 usuario.getApellido(), servidor,
                 usuario.getUsername(), clave);
         String asunto = messageSource.getMessage(
-                "regostro.mensaje.activacion",
+                "registro.mensaje.activacion",
                 null,
                 Locale.getDefault());
         correoService.enviarCorreoHtml(
@@ -158,7 +158,7 @@ public class RegistroServiceImpl implements RegistroService {
                 usuario.getApellido(), servidor,
                 usuario.getUsername(), clave);
         String asunto = messageSource.getMessage(
-                "regostro.mensaje.recordar",
+                "registro.mensaje.recordar",
                 null,
                 Locale.getDefault());
         correoService.enviarCorreoHtml(

@@ -26,10 +26,13 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
                 .requestMatchers("/", "/index", "/css/**",
                         "/webjars/**", "/js/**", "/static/**",
-                        "/img/**", "/contactar", "/faq", 
+                        "/img/**", "/contactar", "/faq",
                         "/testimonios").permitAll()
                 .requestMatchers("/login", "/video/**", "/css/**",
-                        "/js/**", "/webjars/**", "/static/**", 
+                        "/js/**", "/webjars/**", "/static/**",
+                        "/img/**").permitAll()
+                .requestMatchers("/registro", "/video/**", "/css/**",
+                        "/js/**", "/webjars/**", "/static/**",
                         "/img/**").permitAll()
                 .requestMatchers("/entrenador/**").hasRole("ADMIN")
                 .requestMatchers("/usuario/**").hasAnyRole("USER", "ADMIN")
@@ -59,7 +62,6 @@ public class SecurityConfig {
 //
 //        return new InMemoryUserDetailsManager(user, admin);
 //    }
-
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -67,10 +69,10 @@ public class SecurityConfig {
     public void configurerGlobal(AuthenticationManagerBuilder builder) throws Exception {
         builder.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
     }
-    
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    
+
 }

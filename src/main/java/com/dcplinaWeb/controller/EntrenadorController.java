@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -101,5 +102,25 @@ public class EntrenadorController {
             usuarioServiceImpl.activarUsuario(usuario);
         }
         return "redirect:/entrenador/usuarios";
+    }
+    
+    @GetMapping("usuarios/promover/{idUsuario}")
+    public ModelAndView promoverUsuario(@PathVariable Long idUsuario) {
+        try {
+            usuarioService.promoteUserById(idUsuario);
+            return new ModelAndView("redirect:/entrenador/usuarios");
+        } catch (Exception e) {
+            return new ModelAndView("error");
+        }
+    }
+    
+    @GetMapping("usuarios/degradar/{idUsuario}")
+    public ModelAndView degradarUsuario(@PathVariable Long idUsuario) {
+        try {
+            usuarioService.degradeUser(idUsuario);
+            return new ModelAndView("redirect:/entrenador/usuarios");
+        } catch (Exception e) {
+            return new ModelAndView("error");
+        }
     }
 }

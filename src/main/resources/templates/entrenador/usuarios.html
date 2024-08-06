@@ -43,6 +43,8 @@
                             <button class="btn btn-info" th:onclick="'window.location.href=\'/entrenador/usuarios/inactivar/' + ${usuario.idUsuario} + '\''"><i class="fa-solid fa-ban"></i></button>
                             <button class="btn btn-info" th:onclick="'window.location.href=\'/entrenador/usuarios/activar/' + ${usuario.idUsuario} + '\''"><i class="fa-solid fa-check"></i></button>
                             <button class="btn btn-danger" th:onclick="'window.location.href=\'/entrenador/usuarios/eliminar/' + ${usuario.idUsuario} + '\''"><i class="fa-solid fa-trash"></i></button>
+                            <button class="btn btn-success" th:onclick="'window.location.href=\'/entrenador/usuarios/promover/' + ${usuario.idUsuario} + '\''"><i class="fa-solid fa-arrow-up"></i></button>
+                            <button class="btn btn-warning" th:onclick="'window.location.href=\'/entrenador/usuarios/degradar/' + ${usuario.idUsuario} + '\''"><i class="fa-solid fa-arrow-down"></i></button>
                         </td>
                     </tr>
                 </tbody>
@@ -83,7 +85,12 @@
                                 <label for="email">Email:</label>
                                 <input type="email" id="email" name="email" class="form-control"  required/>
 
+                            </div><div class="form-group">
+                                <label for="contrasena">Contraseña:</label>
+                                <input type="password" id="password" name="contrasena" class="form-control"  required/>
+
                             </div>
+
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -101,4 +108,9 @@
         document.getElementById('usuarioForm').submit();
         }
     </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
 </html>

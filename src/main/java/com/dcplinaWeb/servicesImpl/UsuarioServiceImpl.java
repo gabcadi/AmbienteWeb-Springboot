@@ -73,7 +73,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         usuario = usuarioDao.save(usuario);
         if (crearRolUser) {
             Rol rol = new Rol();
-            rol.setNombre("ROLE_USER");
+            rol.setNombre("ROLE_INVITADO");
             rol.setId_usuario(usuario.getIdUsuario());
             rolDao.save(rol);
 
@@ -92,4 +92,35 @@ public class UsuarioServiceImpl implements UsuarioService {
         return usuarioDao.findById(idUsuario).orElse(null);
 
     }
+
+    
+    @Override
+    @Transactional
+    public void promoteUserById(Long idUsuario) {
+        Usuario usuario = usuarioDao.findById(idUsuario).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        Rol rolInvitado = rolDao.findByNombreAndIdUsuario("ROLE_INVITADO", usuario.getIdUsuario());
+        if (rolInvitado == null) {
+            throw new RuntimeException("El usuario no tiene rol de invitado");
+        }
+
+        rolInvitado.setNombre("ROLE_USER");
+        rolDao.save(rolInvitado);
+    }
+
+    @Override
+    @Transactional
+    public void degradeUser(Long idUsuario) {
+        Usuario usuario = usuarioDao.findById(idUsuario).orElse(null);
+        if (usuario == null) {
+            throw new RuntimeException("Usuario no encontrado");
+        }
+        Rol rolUsuario = rolDao.findByNombreAndIdUsuario("ROLE_USER", idUsuario);
+        if (rolUsuario == null) {
+            throw new RuntimeException("El usuario no tiene rol de usuario");
+        }
+        rolUsuario.setNombre("ROLE_INVITADO");
+        rolDao.save(rolUsuario);
+    }
 }
+

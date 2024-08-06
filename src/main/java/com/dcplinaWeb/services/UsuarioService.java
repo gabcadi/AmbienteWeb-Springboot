@@ -34,4 +34,8 @@ public interface UsuarioService {
     //Se elimina el usuario que tiene el id pasado por parametro
     public void delete(Usuario usuario);
     
+    public void promoteUserById(Long idUsuario);
+    
+    public void degradeUser(Long idUsuario);
+    
 }
