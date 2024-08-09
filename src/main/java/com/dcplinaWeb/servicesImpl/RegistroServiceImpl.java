@@ -46,7 +46,7 @@ public class RegistroServiceImpl implements RegistroService {
     }
 
     @Override
-    public void activar(Usuario usuario, MultipartFile imagenFile) {
+    public void activar(Usuario usuario) {
         var codigo = new BCryptPasswordEncoder();
         usuario.setContrasena(codigo.encode(usuario.getContrasena()));
     }

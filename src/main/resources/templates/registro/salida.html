@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Login</title>
+                <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+                </head>
+                <body>
+                    <div class="row py-2 justify-content-center">
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-header align-items-center">
+                                    [[${titulo}]]
+                                </div>
+                                <div class="card-body">
+                                    <strong>[[${mensaje}]]</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </body>
+                </html>

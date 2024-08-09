@@ -31,7 +31,7 @@ public class SecurityConfig {
                 .requestMatchers("/login", "/video/**", "/css/**",
                         "/js/**", "/webjars/**", "/static/**",
                         "/img/**").permitAll()
-                .requestMatchers("/registro", "/video/**", "/css/**",
+                .requestMatchers("/registro/**", "/video/**", "/css/**",
                         "/js/**", "/webjars/**", "/static/**",
                         "/img/**").permitAll()
                 .requestMatchers("/entrenador/**").hasRole("ADMIN")

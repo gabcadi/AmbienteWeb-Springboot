@@ -37,6 +37,11 @@
                                 Cerrar Sesión
                             </button>
                         </form>
+                        <a th:href="@{templates/registro}" style="color: #ffffff; text-decoration: none" sec:authorize="!isAuthenticated()">
+                            <i class="fa-solid fa-user-plus" style="color: #ffffff;"></i>
+                            Registrarse
+                        </a>
+
                     </div>
                 </div>
             </div>

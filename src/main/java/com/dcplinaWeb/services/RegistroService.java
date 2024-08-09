@@ -4,8 +4,6 @@ package com.dcplinaWeb.services;
 import com.dcplinaWeb.domain.Usuario;
 import jakarta.mail.MessagingException;
 import org.springframework.ui.Model;
-import org.springframework.web.multipart.MultipartFile;
-
 
 public interface RegistroService {
     
@@ -13,7 +11,7 @@ public interface RegistroService {
     
     public Model crearUsuario(Model model, Usuario usuario) throws MessagingException;
     
-    public void activar(Usuario usuario, MultipartFile imagenFile);
+    public void activar(Usuario usuario);
     
     public Model recordarUsuario(Model model, Usuario usuario);
     

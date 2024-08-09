@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Login</title>
+                <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+                </head>
+                <body>
+                    <!-- 3 Fragmento que se utiliza recordar un usuario -->
+                    <section th:fragment="recordarUsuario">
+                        <div class="row py-2 justify-content-center">
+                            <div class="col-md-3">
+                                <section>
+                                    <div class="col-md-4 d-grid">
+                                        <a th:href="@{/login}" class="btn btn-primary">
+                                            <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
+                                        </a>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="row py-2 justify-content-center">
+                            <div class="col-md-3">
+                                <form method="POST"
+                                      th:action="@{/registro/recordarUsuario}" th:object="${usuario}"
+                                      class="was-validated">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4>[[#{registro.recordar.us}]]</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="mb-3">
+                                                <label for="username">[[#{usuario.username}]]</label>
+                                                <input type="text" class="form-control" name="username" th:field="*{username}"/></div>                                                
+                                            <div class="mb-3">
+                                                <label for="email">[[#{usuario.correo}]]</label>
+                                                <input type="email" class="form-control" name="email" th:field="*{email}"/></div>
+                                        </div>
+                                        <div class="card-footer text-end">                                                
+                                            <button type="submit" class="btn btn-success">
+                                                <i class="fas fa-address-card"></i> [[#{registro.recordar.us}]]
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                </body>
+                </html>
