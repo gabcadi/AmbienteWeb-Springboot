@@ -4,6 +4,8 @@ import com.dcplinaWeb.domain.Usuario;
 import com.dcplinaWeb.services.CorreoService;
 import com.dcplinaWeb.services.RegistroService;
 import com.dcplinaWeb.services.UsuarioService;
+import com.dcplinaWeb.servicesImpl.UsuarioServiceImpl;
+
 import jakarta.mail.MessagingException;
 import java.util.Locale;
 import java.util.logging.Level;
@@ -26,6 +28,8 @@ public class RegistroServiceImpl implements RegistroService {
     private UsuarioService usuarioService;
     @Autowired
     private MessageSource messageSource;
+    @Autowired
+    private UsuarioServiceImpl usuarioServiceImpl;
 
     @Override
     public Model activar(Model model, String username, String clave) {
@@ -49,6 +53,9 @@ public class RegistroServiceImpl implements RegistroService {
     public void activar(Usuario usuario) {
         var codigo = new BCryptPasswordEncoder();
         usuario.setContrasena(codigo.encode(usuario.getContrasena()));
+        usuario.setTelefono(usuario.getTelefono());
+        usuario.isActivo();
+        usuarioService.save(usuario, false);
     }
 
     @Override
@@ -80,9 +87,8 @@ public class RegistroServiceImpl implements RegistroService {
         return model;
     }
 
-   
     @Override
-    public Model recordarUsuario(Model model, Usuario usuario){
+    public Model recordarUsuario(Model model, Usuario usuario) {
 
         String mensaje;
         Usuario usuario2 = usuarioService.getUsuarioPorUsernameOCorreo(usuario.getUsername(), usuario.getEmail());
@@ -145,25 +151,29 @@ public class RegistroServiceImpl implements RegistroService {
                 Locale.getDefault());
         correoService.enviarCorreoHtml(
                 usuario.getEmail(),
-                asunto, 
+                asunto,
                 mensaje);
     }
-    
+
     private void enviarCorreoRecordar(Usuario usuario, String clave) throws MessagingException {
         String mensaje = messageSource.getMessage(
                 "registro.correo.recordar",
                 null,
                 Locale.getDefault());
-        mensaje = String.format(mensaje, usuario.getNombre(),
-                usuario.getApellido(), servidor,
-                usuario.getUsername(), clave);
+        mensaje = String.format(
+                mensaje,
+                usuario.getNombre(),
+                usuario.getApellido(),
+                servidor,
+                usuario.getUsername(),
+                clave);
         String asunto = messageSource.getMessage(
                 "registro.mensaje.recordar",
                 null,
                 Locale.getDefault());
         correoService.enviarCorreoHtml(
                 usuario.getEmail(),
-                asunto, 
+                asunto,
                 mensaje);
     }
 

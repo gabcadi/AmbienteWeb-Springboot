@@ -33,10 +33,10 @@
                                                 <input type="email" class="form-control" name="email" th:field="*{email}" required="true"/></div>
                                             <div class="mb-3">
                                                 <label for="telefono">[[#{usuario.telefono}]]</label>
-                                                <input type="tel" class="form-control" name="telefono" th:field="*{telefono}"/></div>
+                                                <input type="tel" class="form-control" name="telefono" th:field="*{telefono}" required="true"/></div>
                                             <div class="mb-3">
                                                 <label for="password">[[#{usuario.password}]]</label>
-                                                <input type="password" class="form-control" name="contrasena" th:field="*{contrasena}"/></div>                                                
+                                                <input type="password" class="form-control" name="contrasena" th:field="*{contrasena}" required="true"/></div>                                                
                                         </div>
                                         <div class="card-footer align-items-center">
                                             <button type="submit" class="btn btn-success">

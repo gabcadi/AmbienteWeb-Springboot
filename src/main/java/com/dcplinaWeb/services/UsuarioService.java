@@ -38,4 +38,7 @@ public interface UsuarioService {
     
     public void degradeUser(Long idUsuario);
     
+
+    
+    
 }

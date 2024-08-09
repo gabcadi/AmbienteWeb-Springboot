@@ -20,17 +20,17 @@ public class UsuarioServiceImpl implements UsuarioService {
     private RolDao rolDao;
 
     @Transactional
-    public void inactivarUsuario(Usuario usuario){
+    public void inactivarUsuario(Usuario usuario) {
         usuario.setActivo(false);
         usuarioDao.save(usuario);
     }
-    
+
     @Transactional
-    public void activarUsuario(Usuario usuario){
+    public void activarUsuario(Usuario usuario) {
         usuario.setActivo(true);
         usuarioDao.save(usuario);
     }
-    
+
     @Override
     @Transactional(readOnly = true)
     public List<Usuario> getUsuarios() {
@@ -79,7 +79,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 
         }
     }
-    
 
     @Override
     @Transactional
@@ -93,7 +92,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     }
 
-    
     @Override
     @Transactional
     public void promoteUserById(Long idUsuario) {
@@ -122,5 +120,10 @@ public class UsuarioServiceImpl implements UsuarioService {
         rolUsuario.setNombre("ROLE_INVITADO");
         rolDao.save(rolUsuario);
     }
-}
 
+//    @Transactional
+//    public void activarUsuario(Usuario usuario, boolean Activo) {
+//        usuario.setActivo(true);
+//        usuarioDao.save(usuario);
+//    }
+}

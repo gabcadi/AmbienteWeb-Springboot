@@ -5,23 +5,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-
 @Controller
 public class LoginController {
-    
+
     @GetMapping("/login")
-    public String login(){
+    public String login() {
         return "login";
     }
-    
-   @GetMapping("/default")
+
+    @GetMapping("/default")
     public String defaultAfterLogin(Authentication authentication) {
         if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
             return "redirect:/entrenador/home";
+        } else if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_USER"))) {
+            return "redirect:/usuario/home";
+        } else{
+            return "redirect:/";
         }
-        return "redirect:/usuario/home";
     }
 }
-
-
-
