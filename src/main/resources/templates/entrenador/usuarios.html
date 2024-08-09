@@ -12,10 +12,16 @@
         <header th:replace="~{layout/components :: preHeader}"></header>
         <navbar th:replace="~{layout/components :: navbarAdministrador}"></navbar>
 
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb m-3">
+                <li class="breadcrumb-item"><a th:href="@{/}">Inicio</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Usuarios</li>
+            </ol>
+        </nav>
         <!-- Vista de los usuarios -->
 
-        <div class="w-100 p-4">
-            <h1 class='my-3'>Módulo de Usuarios</h1>
+        <div class="w-100 m-3">
+            <h1>Módulo de Usuarios</h1>
             <div class="mb-3">
                 <button class="btn btn-danger" data-toggle="modal" data-target="#usuarioModal">Crear Nuevo Usuario</button>
             </div>
@@ -42,7 +48,7 @@
                         <td>
                             <button class="btn btn-info" th:onclick="'window.location.href=\'/entrenador/usuarios/inactivar/' + ${usuario.idUsuario} + '\''"><i class="fa-solid fa-ban"></i></button>
                             <button class="btn btn-info" th:onclick="'window.location.href=\'/entrenador/usuarios/activar/' + ${usuario.idUsuario} + '\''"><i class="fa-solid fa-check"></i></button>
-                            <button class="btn btn-danger" th:onclick="'window.location.href=\'/entrenador/usuarios/eliminar/' + ${usuario.idUsuario} + '\''"><i class="fa-solid fa-trash"></i></button>
+                            <button class="btn btn-danger me-3" th:onclick="'window.location.href=\'/entrenador/usuarios/eliminar/' + ${usuario.idUsuario} + '\''"><i class="fa-solid fa-trash"></i></button>
                             <button class="btn btn-success" th:onclick="'window.location.href=\'/entrenador/usuarios/promover/' + ${usuario.idUsuario} + '\''"><i class="fa-solid fa-arrow-up"></i></button>
                             <button class="btn btn-warning" th:onclick="'window.location.href=\'/entrenador/usuarios/degradar/' + ${usuario.idUsuario} + '\''"><i class="fa-solid fa-arrow-down"></i></button>
                         </td>
