@@ -37,11 +37,6 @@
                                 Cerrar Sesión
                             </button>
                         </form>
-                        <a th:href="@{templates/registro}" style="color: #ffffff; text-decoration: none" sec:authorize="!isAuthenticated()">
-                            <i class="fa-solid fa-user-plus" style="color: #ffffff;"></i>
-                            Registrarse
-                        </a>
-
                     </div>
                 </div>
             </div>
@@ -64,7 +59,7 @@
                         <a class="nav-link" href="#" sec:authorize="hasRole('ROLE_USER')">Reservar Clase</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Servicios</a>
+                        <a class="nav-link" th:href="@{/servicios}">Servicios</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/testimonios}">Testimonios</a>
@@ -95,7 +90,7 @@
                         <a class="nav-link" href="#">Reservar Clase</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/#">Servicios</a>
+                        <a class="nav-link" th:href="@{/servicios}">Servicios</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/testimonios}">Testimonios</a>
@@ -123,7 +118,7 @@
 
         </nav>
 
-        <footer class="container-fluid position-absolute fixed-bottom" style="background-color: #3c3c3c;" th:fragment="footer">
+        <footer class="container-fluid fixed-bottom mt-5" style="background-color: #3c3c3c;" th:fragment="footer">
             <div class="d-flex justify-content-between align-items-center m-2">
                 <p class="text-white mb-0">Copyright © 2024 DC-PlinaByChino.com</p>
                 <div class="d-flex">

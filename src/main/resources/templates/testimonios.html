@@ -11,7 +11,14 @@
         <header th:replace="~{layout/components :: preHeader}"></header>
         <navbar th:replace="~{layout/components :: navbar}"></navbar>
         
-        <div class="container mt-5">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb m-3">
+                <li class="breadcrumb-item"><a th:href="@{/}">Inicio</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Testimonios</li>
+            </ol>
+        </nav>
+        
+        <div class="container mt-3 mb-5">
             <h1 class="text-center">Testimonios</h1>
             <div class="row">
                 <div class="col-md-4">

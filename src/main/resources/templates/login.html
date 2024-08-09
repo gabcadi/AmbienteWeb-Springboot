@@ -36,13 +36,16 @@
                                     </div>
                                     <div class="form-check mt-1">
                                         <input type="checkbox" class="form-check-input" id="rememberMe" name="rememberMe">
-                                            <small class="form-check-label" for="rememberMe">Recordar usuario</small>
+                                            <small class="form-check-label" for="rememberMe">Recordar contraseña</small>
                                     </div>
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-danger mt-2">Login</button>
+                                        <button type="submit" class="btn btn-danger mt-2">Ingresar</button>
+                                    </div>
+                                    <div class="text-center">
+                                        <a th:href="@{/registro/nuevo}" class="btn btn-primary mt-3" role="button">¿No tienes cuenta? Crea una!</a>
                                     </div>
                                 </form>
-                                <div class="card-footer text-center bg-light mt-4">
+                                <div class="card-footer text-center bg-light mt-3">
                                     <small class="text-muted">¿Olvidaste tu contraseña? <a th:href="@{/registro/recordar}" class="text-primary">Recuperar</a></small>
                                 </div>
                             </div>

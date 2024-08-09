@@ -12,12 +12,6 @@
     min-height: 87vh;
 }
 
-.footer{
-    bottom: 0;
-    position: absolute;
-    width: 100%;
-}
-
 html, body {
     height: 100%;
     margin: 0;
@@ -86,4 +80,9 @@ body, * {
 
 .message-row:hover {
     background-color: #f1f1f1;
+}
+
+.register-container {
+    background-color: rgba(172, 28, 44, 0.23);
+    height: 100vh;
 }

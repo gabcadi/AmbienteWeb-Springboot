@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/components :: head}"></head>
+    <head>
+        <title>Servicios | DC-PLINA</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" th:href="@{/css/services.css}"/>
+    </head>
+    <body>
+        <header th:replace="~{layout/components :: preHeader}"></header>
+        <navbar th:replace="~{layout/components :: navbar}"></navbar>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb m-3">
+                <li class="breadcrumb-item"><a th:href="@{/}">Inicio</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Servicios</li>
+            </ol>
+        </nav>
+
+        <div class="container">
+            <h1 class="text-center">Nuestros Servicios</h1>
+            <p class="text-center mb-2">Elige el servicio que mejor se adapte a tus necesidades</p>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card service-card text-center">
+                        <div><img class="card-img-top w-50 mt-2" th:src="@{/img/rutina.jpg}" alt="Rutinas Personalizadas"></div>
+                        <div class="card-body">
+                            <h5 class="card-title">Rutinas Personalizadas</h5>
+                            <p class="card-text">Rutinas diseñadas específicamente para ti, según tus metas y condición física.</p>
+                            <a href="#" class="btn btn-primary">Más Información</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card service-card text-center">
+                        <div><img class="card-img-top w-75 rounded-circle mt-2" th:src="@{/img/personalTrainer.jpg}" alt="Personal Training"></div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Personal Training</h5>
+                            <p class="card-text">Entrenamiento personal con un entrenador certificado.</p>
+                            <a href="#" class="btn btn-primary">Más Información</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card service-card text-center">
+                        <div><img class="card-img-top w-50 mt-2" th:src="@{/img/la-comida-es-salud.jpg}" alt="Programa de Nutrición"></div>
+                        <div class="card-body">
+                            <h5 class="card-title">Programa de Nutrición</h5>
+                            <p class="card-text">Plan de nutrición personalizado para complementar tu entrenamiento.</p>
+                            <a href="#" class="btn btn-primary">Más Información</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center mb-5">
+            <a th:href="@{/reservas}" class="btn btn-danger btn-lg mt-3 mb-5" role="button">Reserva Ahora</a>
+        </div>
+
+        <footer th:replace="~{layout/components :: footer}"></footer>
+    </body>
+</html>
