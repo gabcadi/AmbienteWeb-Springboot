@@ -10,7 +10,20 @@
     <body>
         <header th:replace="~{layout/components :: preHeader}"></header>
         <navbar th:replace="~{layout/components :: navbarUsuario}"></navbar>
-       
+        <div class="container mt-5">
+            <h1>Bienvenido, Usuario</h1>
+            <div class="row mt-4">
+                <div th:if="${param.error}">
+                    <div class="alert alert-danger" role="alert" th:text="${param.error}"></div>
+                </div>
+                <div class="col-md-6">
+                    <a href="/usuario/clase" class="btn btn-primary btn-lg btn-block">Ver Clases Disponibles</a>
+                </div>
+                <div class="col-md-6">
+                    <a href="/usuario/mis-reservas" class="btn btn-secondary btn-lg btn-block">Mis Reservas</a>
+                </div>
+            </div>
+        </div>
         <footer th:replace="~{layout/components :: footer}"></footer>
     </body>
 </html>

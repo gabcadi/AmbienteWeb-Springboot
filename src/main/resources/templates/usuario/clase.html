@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/components :: head}"></head>
+    <head>
+        <title>Home - Usuario | DC-PLINA</title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    </head>
+    <body style="background-color: #f8f9fa;">
+        <header th:replace="~{layout/components :: preHeader}"></header>
+        <navbar th:replace="~{layout/components :: navbarUsuario}"></navbar>
+        <div class="container mt-5">
+            <div th:if="${error}" class="alert alert-danger">
+                <p th:text="${error}"></p>
+            </div>
+            <h1 class="text-center mb-4">Clases Disponibles para Reservar</h1>
+            <div class="row">
+                <div th:each="clase : ${clase}" class="col-md-4 mb-4">
+                    <div class="card clase-card">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${clase.nombre}">Nombre de la Clase</h5>
+                            <p class="card-text" th:text="${clase.descripcion}">Descripción de la clase</p>
+                            <p class="card-text"><strong>Duración:</strong> <span th:text="${clase.duracion}">60 minutos</span></p>
+                            <p class="card-text"><strong>Fecha:</strong> <span th:text="${#temporals.format(clase.fecha, 'dd-MM-yyyy HH:mm')}">01-01-2024 10:00</span></p>
+                            <form th:action="@{/usuario/reservar}" method="post">
+                                <input type="hidden" name="idClase" th:value="${clase.id}"/>
+                                <button type="submit" class="btn btn-primary btn-reservar">Reservar</button>
+                            </form>                       
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer th:replace="~{layout/components :: footer}"></footer>
+    </body>
+</html>
+

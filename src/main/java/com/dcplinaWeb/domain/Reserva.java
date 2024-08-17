@@ -4,7 +4,6 @@
  */
 package com.dcplinaWeb.domain;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,19 +11,27 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import java.io.Serializable;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
+
 import lombok.Data;
 
+@Entity
+@Data
+@Table(name = "reserva")
+public class Reserva {
 
-public class Reserva implements Serializable {
-
-    private static final long serialVersionUID = 11;
-    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Clase clase;
-    private Usuario usuario;
-    private LocalDateTime fechaReserva;
 
+    @ManyToOne
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_clase")
+    private Clase clase;
+    
+    private LocalDateTime fechaReserva;
+    private boolean activa;
 }

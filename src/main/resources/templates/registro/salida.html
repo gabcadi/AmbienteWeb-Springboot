@@ -2,11 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" 
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/components :: head}"></head>
     <head>
         <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Login</title>
                 <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+
                 </head>
                 <body>
                     <div class="row py-2 justify-content-center">
@@ -21,6 +23,6 @@
                             </div>
                         </div>
                     </div>
-
+                    <footer th:replace="~{layout/components :: footer}"></footer>
                 </body>
                 </html>

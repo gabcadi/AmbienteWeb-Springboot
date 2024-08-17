@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/components :: head}"></head>
+    <head>
+        <title>Reservas - Administrador | DC-PLINA</title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    </head>
+    <body style="background-color: #f8f9fa;">
+        <header th:replace="~{layout/components :: preHeader}"></header>
+        <navbar th:replace="~{layout/components :: navbar}"></navbar>
+        <div class="container mt-5">
+            <h1 class="text-center mb-4">Reservas Activas</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Clase</th>
+                        <th>Usuario</th>
+                        <th>Fecha de Reserva</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="reserva : ${reservas}">
+                        <td th:text="${reserva.clase.nombre}">Nombre de la Clase</td>
+                        <td th:text="${reserva.usuario.nombre}">Nombre del Usuario</td>
+                        <td th:text="${#temporals.format(reserva.fechaReserva, 'dd-MM-yyyy HH:mm')}">Fecha de Reserva</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <footer th:replace="~{layout/components :: footer}"></footer>
+    </body>
+</html>

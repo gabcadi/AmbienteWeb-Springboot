@@ -56,7 +56,7 @@
                         <a class="nav-link" th:href="@{/entrenador/home}" sec:authorize="hasRole('ROLE_ADMIN')">Administrador</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" sec:authorize="hasRole('ROLE_USER')">Reservar Clase</a>
+                        <a class="nav-link" th:href="@{/usuario/clase}" sec:authorize="hasRole('ROLE_USER')">Reservar Clase</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/servicios}">Servicios</a>
