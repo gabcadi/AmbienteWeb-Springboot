@@ -127,3 +127,19 @@ body, * {
         margin-bottom: 20px;
     }
 }
+
+
+@media (max-width: 767px) {
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar-brand {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+
+
+

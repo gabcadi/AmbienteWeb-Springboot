@@ -14,6 +14,7 @@
             <div th:if="${error}" class="alert alert-danger">
                 <p th:text="${error}"></p>
             </div>
+          
             <h1 class="text-center mb-4">Clases Disponibles para Reservar</h1>
             <div class="row">
                 <div th:each="clase : ${clase}" class="col-md-4 mb-4">
@@ -25,7 +26,7 @@
                             <p class="card-text"><strong>Fecha:</strong> <span th:text="${#temporals.format(clase.fecha, 'dd-MM-yyyy HH:mm')}">01-01-2024 10:00</span></p>
                             <form th:action="@{/usuario/reservar}" method="post">
                                 <input type="hidden" name="idClase" th:value="${clase.id}"/>
-                                <button type="submit" class="btn btn-primary btn-reservar">Reservar</button>
+                                <button type="submit" class="btn btn-danger btn-reservar">Reservar</button>
                             </form>                       
                         </div>
                     </div>
