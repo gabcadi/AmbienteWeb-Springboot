@@ -6,6 +6,7 @@
     <head>
         <title>FAQ | DC-PLINA</title>
         <meta charset="UTF-8">
+        <link rel="stylesheet" th:href="@{/css/styles.css}"/>
     </head>
     <body>
         <header th:replace="~{layout/components :: preHeader}"></header>
@@ -66,6 +67,18 @@
                     <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
                             Sí, puedes cancelar o reprogramar una sesión hasta 24 horas antes de la hora programada. Después de este tiempo, no se permiten cambios.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" style="font-weight:bold;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFour">
+                            ¿Dónde estamos ubicados?
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-center">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.487383705933!2d-84.3819951!3d9.9765385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa051e8686519c5%3A0xbc23ff635a73f3ce!2sPower%20House%20Gym%20Atenas!5e0!3m2!1ses-419!2scr!4v1724625295386!5m2!1ses-419!2scr" width="500" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>

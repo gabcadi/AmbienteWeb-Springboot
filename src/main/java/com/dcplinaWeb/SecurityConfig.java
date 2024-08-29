@@ -26,7 +26,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
                 .requestMatchers("/", "/index", "/css/**",
                         "/webjars/**", "/js/**", "/static/**",
-                        "/img/**", "/contactar", "/faq",
+                        "/img/**", "/contactar", "/faq", "/enviarMensaje",
                         "/testimonios", "/servicios").permitAll()
                 .requestMatchers("/login", "/video/**", "/css/**",
                         "/js/**", "/webjars/**", "/static/**",

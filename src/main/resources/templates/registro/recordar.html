@@ -10,9 +10,15 @@
                 <link rel="stylesheet" th:href="@{/css/styles.css}"/>
                 </head>
                 <body>
-                    <!-- 3 Fragmento que se utiliza recordar un usuario -->
+                    <div class="container">
+                        <div class="video-background">
+                            <video autoplay muted loop id="bgVideo">
+                                <source th:src="@{/img/bgVideo1.mp4}" type="video/mp4"> Your browser does not support the video.
+                            </video>
+                        </div>
+                    </div>
                     <section th:fragment="recordarUsuario">
-                        <div class="row py-2 justify-content-center">
+                        <div class="p-3">
                             <div class="col-md-3">
                                 <section>
                                     <div class="col-md-4 d-grid">

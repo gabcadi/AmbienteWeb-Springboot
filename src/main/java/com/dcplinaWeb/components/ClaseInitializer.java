@@ -17,7 +17,8 @@ public class ClaseInitializer {
    @Autowired
     private ClaseService claseService;
 
-    @Scheduled(cron = "0 0 7 * * SAT") // Ejecuta a las 7 AM todos los domingos
+    @PostConstruct
+    //@Scheduled(cron = "0 0 12 * * SAT") // Ejecuta a las 7 AM todos los domingos
     public void init() {
         // Definir el horario de inicio y fin
         LocalTime inicio = LocalTime.of(7, 0);
@@ -38,7 +39,7 @@ public class ClaseInitializer {
             while (fecha.toLocalTime().isBefore(fin)) {
                 Clase clase = new Clase();
                 clase.setNombre("Personal " + fecha.toLocalTime());
-                clase.setDescripcion("Entrenamiento personal " + fecha.toLocalTime());
+                clase.setDescripcion("Entrenamiento personalizado");
                 clase.setDuracion(60); // Duración de 60 minutos
                 clase.setFecha(fecha);
                 claseService.crearClase(clase);

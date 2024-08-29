@@ -9,7 +9,7 @@
     </head>
     <body style="background-color: #f8f9fa;">
         <header th:replace="~{layout/components :: preHeader}"></header>
-        <navbar th:replace="~{layout/components :: navbarUsuario}"></navbar>
+        <navbar th:replace="~{layout/components :: navbar}"></navbar>
         <div class="container mt-5">
             <div th:if="${error}" class="alert alert-danger">
                 <p th:text="${error}"></p>
@@ -24,16 +24,54 @@
                             <p class="card-text" th:text="${clase.descripcion}">Descripción de la clase</p>
                             <p class="card-text"><strong>Duración:</strong> <span th:text="${clase.duracion}">60 minutos</span></p>
                             <p class="card-text"><strong>Fecha:</strong> <span th:text="${#temporals.format(clase.fecha, 'dd-MM-yyyy HH:mm')}">01-01-2024 10:00</span></p>
-                            <form th:action="@{/usuario/reservar}" method="post">
-                                <input type="hidden" name="idClase" th:value="${clase.id}"/>
-                                <button type="submit" class="btn btn-danger btn-reservar">Reservar</button>
-                            </form>                       
+                            <button type="button" class="btn btn-danger btn-reservar" data-toggle="modal" data-target="#confirmModal"
+                                    th:data-id="${clase.id}" th:data-nombre="${clase.nombre}">
+                                Reservar
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <footer th:replace="~{layout/components :: footer}"></footer>
+
+        <!-- Modal de Confirmación -->
+        <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmModalLabel">Confirmar Reservación</h5>
+
+                    </div>
+                    <div class="modal-body">
+                        ¿Estás seguro de que quieres reservar la clase "<span id="modalClassName"></span>"?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <form id="confirmForm" th:action="@{/usuario/reservar}" method="post">
+                            <input type="hidden" name="idClase" id="modalClassId"/>
+                            <button type="submit" class="btn btn-danger">Confirmar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#confirmModal').on('show.bs.modal', function (event) {
+                    var button = $(event.relatedTarget); // Botón que activó el modal
+                    var className = button.data('nombre'); // Extraer información del atributo data-nombre
+                    var classId = button.data('id'); // Extraer información del atributo data-id
+
+                    var modal = $(this);
+                    modal.find('#modalClassName').text(className); // Insertar el nombre de la clase en el modal
+                    modal.find('#modalClassId').val(classId); // Insertar el ID de la clase en el formulario oculto
+                });
+            });
+        </script>
     </body>
 </html>
-

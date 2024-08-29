@@ -6,7 +6,7 @@
     <head>
         <title>Servicios | DC-PLINA</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" th:href="@{/css/services.css}"/>
+        <link rel="stylesheet" th:href="@{/css/styles.css}"/>
     </head>
     <body>
         <header th:replace="~{layout/components :: preHeader}"></header>
@@ -32,7 +32,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Rutinas Personalizadas</h5>
                             <p class="card-text">Rutinas diseñadas específicamente para ti, según tus metas y condición física.</p>
-                            <a href="#" class="btn btn-primary">Más Información</a>
+                            <a th:href="@{/contactar}" class="btn btn-primary">Más Información</a>
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                         <div class="card-body text-center">
                             <h5 class="card-title">Personal Training</h5>
                             <p class="card-text">Entrenamiento personal con un entrenador certificado.</p>
-                            <a href="#" class="btn btn-primary">Más Información</a>
+                            <a th:href="@{/contactar}" class="btn btn-primary">Más Información</a>
                         </div>
                     </div>
                 </div>
@@ -52,15 +52,11 @@
                         <div class="card-body">
                             <h5 class="card-title">Programa de Nutrición</h5>
                             <p class="card-text">Plan de nutrición personalizado para complementar tu entrenamiento.</p>
-                            <a href="#" class="btn btn-primary">Más Información</a>
+                            <a th:href="@{/contactar}" class="btn btn-primary">Más Información</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="d-flex justify-content-center mb-5">
-            <a th:href="@{/reservas}" class="btn btn-danger btn-lg mt-3 mb-5" role="button">Reserva Ahora</a>
         </div>
 
         <footer th:replace="~{layout/components :: footer}"></footer>
