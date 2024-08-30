@@ -26,7 +26,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
                 .requestMatchers("/", "/index", "/css/**",
                         "/webjars/**", "/js/**", "/static/**",
-                        "/img/**", "/contactar", "/faq", "/enviarMensaje",
+                        "/img/**", "/contactar", "/faq", "/mensajes/**",
                         "/testimonios", "/servicios").permitAll()
                 .requestMatchers("/login", "/video/**", "/css/**",
                         "/js/**", "/webjars/**", "/static/**",
@@ -34,7 +34,7 @@ public class SecurityConfig {
                 .requestMatchers("/registro/**","/registro/nuevo","/registro/activa/${id_usuario}","/registro/activar", "/video/**", "/css/**",
                         "/js/**", "/webjars/**", "/static/**",
                         "/img/**").permitAll()
-                .requestMatchers("/entrenador/**").hasRole("ADMIN")
+                .requestMatchers("/entrenador/**","/mensajes/admin/**").hasRole("ADMIN")
                 .requestMatchers("/usuario/**").hasAnyRole("USER", "ADMIN")
                 .anyRequest().authenticated()
                 )

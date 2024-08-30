@@ -1,67 +1,57 @@
 package com.dcplinaWeb.controller;
 
 import com.dcplinaWeb.domain.Mensaje;
-import com.dcplinaWeb.services.MensajeService;
+import com.dcplinaWeb.servicesImpl.MensajeServiceImpl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
+@RequestMapping("/mensajes")
 public class MensajeController {
-
     @Autowired
-    private MensajeService mensajeService;
+    private MensajeServiceImpl mensajeService;
 
-    // Muestra la página de contacto con el formulario
-    @GetMapping("/contactar")
-    public String mostrarFormularioContacto() {
-        return "contactar";
+    @GetMapping("/nuevo")
+    public String nuevoMensaje(Model model) {
+        model.addAttribute("mensaje", new Mensaje());
+        return "mensajes/nuevo";
     }
 
-    @PostMapping("/enviarMensaje")
-    public String enviarMensaje(
-            @RequestParam("nombre") String nombre,
-            @RequestParam("email") String email,
-            @RequestParam("asunto") String asunto,
-            @RequestParam("mensaje") String contenidoMensaje,
-            Model model) {
-
-        // Crear y guardar el mensaje
-        Mensaje mensaje = new Mensaje();
-        mensaje.setNombre(nombre);
-        mensaje.setEmail(email);
-        mensaje.setAsunto(asunto);
-        mensaje.setContenido(contenidoMensaje);
-        mensajeService.guardarMensaje(mensaje);
-
-        // Añadir un mensaje de éxito a la vista
-        model.addAttribute("mensajeExito", "Tu mensaje ha sido enviado exitosamente! Pronto el coach estará en contacto contigo :)");
-        return "contactar";
+    @PostMapping("/enviar")
+    public String enviarMensaje(@ModelAttribute Mensaje mensaje, RedirectAttributes redirectAttributes) {
+        mensajeService.enviarMensaje(mensaje.getNombreUsuario(), mensaje.getEmail(), mensaje.getAsunto(), mensaje.getContenido());
+        redirectAttributes.addFlashAttribute("mensajeExito", "Mensaje enviado con éxito");
+        return "redirect:/";
     }
 
-    // Muestra todos los mensajes en la vista del inbox del administrador
-    @GetMapping("/admin/mensajes")
-    public String verMensajes(Model model) {
-        List<Mensaje> mensajes = mensajeService.obtenerTodosLosMensajes();
-        mensajes.forEach(m -> System.out.println(m)); 
+    @GetMapping("/admin-inbox")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String verInboxAdmin(Model model) {
+        List<Mensaje> mensajes = mensajeService.obtenerTodosMensajes();
         model.addAttribute("mensajes", mensajes);
-        return "admin/mensajes";
+        return "mensajes/admin-inbox";
     }
 
-    // Muestra los detalles de un mensaje específico por su ID
-    @GetMapping("/admin/mensajes/{id}")
-    public String verDetalleMensaje(@PathVariable("id") Long id, Model model) {
-        Mensaje mensaje = mensajeService.obtenerMensajePorId(id);
-        if (mensaje != null) {
-            model.addAttribute("mensaje", mensaje);
-            return "admin/mensaje-detalle";
-        } else {
-            return "redirect:/admin/mensajes";
-        }
+    @PostMapping("/marcar-leido/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String marcarComoLeido(@PathVariable Long id) {
+        mensajeService.marcarComoLeido(id);
+        return "redirect:/mensajes/admin-inbox";
+    }
+
+    @PostMapping("/eliminar/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String eliminarMensaje(@PathVariable Long id) {
+        mensajeService.eliminarMensaje(id);
+        return "redirect:/mensajes/admin-inbox";
     }
 }

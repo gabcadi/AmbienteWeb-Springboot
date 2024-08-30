@@ -45,11 +45,6 @@ public class EntrenadorController {
         return "entrenador/home";
     }
 
-    @GetMapping("/inbox")
-    public String entrenadorInbox() {
-        return "entrenador/inbox";
-    }
-
     @GetMapping("/usuarios")
     public String inicio(Model model) {
         var usuarios = usuarioService.getUsuarios();

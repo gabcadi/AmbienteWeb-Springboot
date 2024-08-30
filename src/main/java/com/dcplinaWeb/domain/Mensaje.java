@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import lombok.Data;
 
 @Data
@@ -20,11 +21,13 @@ public class Mensaje implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_mensaje")
-    private Long idMensaje;
-
-    private String nombre;
-    private String email;
+    @Column(name="id_mensaje")
+    private Long id;
+    
+    private String nombreUsuario;
+    private String email; 
     private String asunto;
     private String contenido;
+    private LocalDateTime fechaEnvio;
+    private boolean leido;
 }
